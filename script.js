@@ -13,4 +13,8 @@ function subtract (input1, input2) {
 function multiply (input1, input2) {
     return input1 * input2;
 }
-console.log(multiply(5, 5));
+
+function divide (input1, input2) {
+    return input1 / input2;
+}
+console.log(divide(17, 5));
