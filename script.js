@@ -31,4 +31,11 @@ function operate (operator, input1, input2) {
         return divide(input1, input2);
     }
 }
-console.log(operate("*",5, 5));
+
+const operatorButtons = document.querySelectorAll(".operator");
+
+operatorButtons.forEach(button => {
+    button.addEventListener('click', operate);
+  });
+
+// console.log(operate("+",5, 5));
