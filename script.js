@@ -33,6 +33,7 @@ function operate (operator, input1, input2) {
 
 }
 
+// Get operator buttons value if clicked
 const operatorButtons = document.querySelectorAll(".operator");
 
 operatorButtons.forEach(button => {
@@ -40,7 +41,7 @@ operatorButtons.forEach(button => {
   });
 
   function getOperatorValue (e) {
-    return (e.target.value); 
+    calculationArguments = (e.target.value); 
   }
 
 // console.log(operate("+",5, 5));
