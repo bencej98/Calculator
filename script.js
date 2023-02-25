@@ -20,7 +20,7 @@ function divide (input1, input2) {
 }
 
 function operate (operator, input1, input2) {
-
+    console.log("foo")
     if (operator === "+") {
         return add(input1, input2);
     } else if (operator === "-") {
@@ -30,12 +30,17 @@ function operate (operator, input1, input2) {
     } else if (operator === "/") {
         return divide(input1, input2);
     }
+
 }
 
 const operatorButtons = document.querySelectorAll(".operator");
 
 operatorButtons.forEach(button => {
-    button.addEventListener('click', operate);
+    button.addEventListener('click', getOperatorValue);
   });
+
+  function getOperatorValue (e) {
+    return (e.target.value); 
+  }
 
 // console.log(operate("+",5, 5));
