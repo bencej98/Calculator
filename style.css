@@ -20,5 +20,8 @@
     grid-column: -1 / 1;
     justify-self: end;
     font-size: 40px;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 15ch;
 }
 
