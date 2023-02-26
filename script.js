@@ -46,12 +46,16 @@ function getOperatorValue (e) {
 
 // I should store the operator and numbers values first
 
-// Gets the currently clicked operands value and displays it
+// Declared variables needed for displayValue function
 const operandButtons = document.querySelectorAll(".operand");
-const displayDiv =document.querySelector(".display");
+const displayDiv = document.querySelector(".display");
+let currentValue = displayDiv.textContent;
 
+// Gets the currently clicked operands value and stores and displays it
 function displayValue (e) {
     displayDiv.textContent += e.target.value;
+    currentValue += e.target.value;;
+    console.log(currentValue);
 }
 
 operandButtons.forEach(button => {
