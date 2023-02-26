@@ -16,6 +16,8 @@
     border: 3px solid black;
 }
 
+/* overflow: hidden;  max-width: 15ch; is to prevent char overflow */
+
 .display {
     grid-column: -1 / 1;
     justify-self: end;
