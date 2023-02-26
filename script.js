@@ -37,11 +37,26 @@ function operate (operator, input1, input2) {
 const operatorButtons = document.querySelectorAll(".operator");
 
 operatorButtons.forEach(button => {
-    button.addEventListener('click', getOperatorValue);
+    button.addEventListener("click", getOperatorValue);
   });
 
-  function getOperatorValue (e) {
-    calculationArguments = (e.target.value); 
+function getOperatorValue (e) {
+    console.log(calculationArguments = (e.target.value)); 
   }
 
-// console.log(operate("+",5, 5));
+// I should store the operator and numbers values first
+
+// I should also get the operand values clicked and display them
+
+const operandButtons = document.querySelectorAll(".operand");
+const displayDiv =document.querySelector(".display");
+
+function displayValue (e) {
+    displayDiv.textContent = e.target.value;
+}
+
+operandButtons.forEach(button => {
+    button.addEventListener("click", displayValue);
+});
+
+// After storing them I should pass them to operate function (maybe as an array?)
