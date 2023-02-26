@@ -46,17 +46,26 @@ function getOperatorValue (e) {
 
 // I should store the operator and numbers values first
 
-// I should also get the operand values clicked and display them
-
+// Gets the currently clicked operands value and displays it
 const operandButtons = document.querySelectorAll(".operand");
 const displayDiv =document.querySelector(".display");
 
 function displayValue (e) {
-    displayDiv.textContent = e.target.value;
+    displayDiv.textContent += e.target.value;
 }
 
 operandButtons.forEach(button => {
     button.addEventListener("click", displayValue);
 });
+
+
+// Clears the display if "AC" button is clicked
+const clearButton = document.querySelector(".clear");
+
+// Didn't use arrow function because I may reuse it later
+function clearDisplay () {
+    displayDiv.textContent = "";
+}
+clearButton.addEventListener("click", clearDisplay);
 
 // After storing them I should pass them to operate function (maybe as an array?)
