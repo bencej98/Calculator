@@ -43,7 +43,11 @@ operatorButtons.forEach(button => {
 
 function getOperatorValue (e) {
     let operatorValue = e.target.value;
-    console.log(operatorValue); 
+    console.log("Operator value: " + operatorValue); 
+
+    operandButtons.forEach(button => {
+        button.addEventListener("click", getSecondValue);
+    });
   }
 
 // I should store the operator and numbers values first
@@ -53,23 +57,16 @@ const operandButtons = document.querySelectorAll(".operand");
 const displayDiv = document.querySelector(".display");
 
 // These are the values that should be stored and passed to operate function as arguments
-let firstValue;
-let secondValue;
-let operator;
+let firstValue = ""; 
+let secondValue = "";
+let operator = "";
 
 // Gets the currently clicked operands value and stores and displays it
 function displayValue (e) {
     displayDiv.textContent += e.target.value;
+    firstValue += Number(e.target.value);
+    console.log("First value: " +firstValue);
 
-    if (firstValue === false){
-        firstValue += e.target.value;
-        console.log(firstValue);
-        console.log(typeof(Number(firstValue)));
-    } else {
-        secondValue += e.target.value;
-        console.log(secondValue);
-
-    }
 }
 
 operandButtons.forEach(button => {
@@ -91,3 +88,10 @@ clearButton.addEventListener("click", clearDisplay);
 
 let currentNumber1 = displayDiv.textContent;
 // After storing them I should pass them to operate function (maybe as an array?)
+
+
+// Gets the second value
+function getSecondValue (e) {
+    secondValue += Number(e.target.value);
+    console.log("Second value: " + secondValue)
+}
