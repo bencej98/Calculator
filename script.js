@@ -14,6 +14,7 @@ function subtract (input1, input2) {
 function multiply (input1, input2) {
     return input1 * input2;
 }
+
 // Returns the quotient of 2 numbers
 function divide (input1, input2) {
     return input1 / input2;
@@ -72,4 +73,8 @@ function clearDisplay () {
 }
 clearButton.addEventListener("click", clearDisplay);
 
+
+//Storing the current numbers
+
+console.log(displayDiv.textContent);
 // After storing them I should pass them to operate function (maybe as an array?)
