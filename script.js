@@ -38,7 +38,10 @@ function operate (operator, input1, input2) {
 const operatorButtons = document.querySelectorAll(".operator");
 
 operatorButtons.forEach(button => {
-    button.addEventListener("click", getOperatorValue);
+    button.addEventListener("click", (e) => {    
+        getOperatorValue(e);
+        clearDisplay(e);    
+   });
   });
 
 function getOperatorValue (e) {
@@ -65,7 +68,7 @@ let operator = "";
 function displayValue (e) {
     displayDiv.textContent += e.target.value;
     firstValue += Number(e.target.value);
-    console.log("First value: " +firstValue);
+    console.log("First value: " + firstValue);
 
 }
 
