@@ -21,7 +21,7 @@ function divide (input1, input2) {
 }
 
 function operate (operator, input1, input2) {
-    console.log("foo")
+
     if (operator === "+") {
         return add(input1, input2);
     } else if (operator === "-") {
@@ -42,7 +42,8 @@ operatorButtons.forEach(button => {
   });
 
 function getOperatorValue (e) {
-    console.log(calculationArguments = (e.target.value)); 
+    let operatorValue = e.target.value;
+    console.log(operatorValue); 
   }
 
 // I should store the operator and numbers values first
@@ -50,13 +51,25 @@ function getOperatorValue (e) {
 // Declared variables needed for displayValue function
 const operandButtons = document.querySelectorAll(".operand");
 const displayDiv = document.querySelector(".display");
-let currentValue = displayDiv.textContent;
+
+// These are the values that should be stored and passed to operate function as arguments
+let firstValue;
+let secondValue;
+let operator;
 
 // Gets the currently clicked operands value and stores and displays it
 function displayValue (e) {
     displayDiv.textContent += e.target.value;
-    currentValue += e.target.value;;
-    console.log(currentValue);
+
+    if (firstValue === false){
+        firstValue += e.target.value;
+        console.log(firstValue);
+        console.log(typeof(Number(firstValue)));
+    } else {
+        secondValue += e.target.value;
+        console.log(secondValue);
+
+    }
 }
 
 operandButtons.forEach(button => {
@@ -76,5 +89,5 @@ clearButton.addEventListener("click", clearDisplay);
 
 //Storing the current numbers
 
-console.log(displayDiv.textContent);
+let currentNumber1 = displayDiv.textContent;
 // After storing them I should pass them to operate function (maybe as an array?)
