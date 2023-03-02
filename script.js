@@ -37,6 +37,9 @@ function operate (operator, input1, input2) {
 // Get operator buttons value if clicked
 const operatorButtons = document.querySelectorAll(".operator");
 
+// Appends eventlistener to operators and after operator is clicked stores second value
+
+// I should somehow stop storing the first value when this happens
 operatorButtons.forEach(button => {
     button.addEventListener("click", (e) => {    
         getOperatorValue(e);
@@ -63,17 +66,24 @@ const displayDiv = document.querySelector(".display");
 let firstValue = ""; 
 let secondValue = "";
 let operator = "";
+console.log(typeof(secondValue));
 
 // Gets the currently clicked operands value and stores and displays it
 function displayValue (e) {
     displayDiv.textContent += e.target.value;
+
+}
+
+function getFirstValue (e) {
     firstValue += Number(e.target.value);
     console.log("First value: " + firstValue);
-
 }
 
 operandButtons.forEach(button => {
     button.addEventListener("click", displayValue);
+    if (secondValue !== "") {
+        button.removeEventListener("click", displayValue);
+    }
 });
 
 
