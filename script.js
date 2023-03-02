@@ -79,11 +79,15 @@ function getFirstValue (e) {
     console.log("First value: " + firstValue);
 }
 
+// Right now it does stop storing the first value if the second is present
+// The problem I should solve is that is stores the first value of the second number as it is not present yet when the function is run
 operandButtons.forEach(button => {
-    button.addEventListener("click", displayValue);
-    if (secondValue !== "") {
-        button.removeEventListener("click", displayValue);
-    }
+    button.addEventListener("click", (e) => {
+        displayValue(e);
+        if (secondValue === "") {
+            getFirstValue (e);
+        }
+    });
 });
 
 
