@@ -123,13 +123,6 @@ function clearDisplay () {
 }
 clearButton.addEventListener("click", clearDisplay);
 
-
-//Storing the current numbers
-
-let currentNumber1 = displayDiv.textContent;
-// After storing them I should pass them to operate function (maybe as an array?)
-
-
 // Gets the second value
 function getSecondValue (e) {
     secondValue += Number(e.target.value);
