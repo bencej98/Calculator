@@ -67,14 +67,14 @@ operatorButtons.forEach(button => {
 
 
 function getOperatorValue (e) {
-    operatorValue = e.target.value;
-    console.log("Operator value: " + operatorValue);
+    operator = e.target.value;
+    console.log("Operator value: " + operator);
 
     operandButtons.forEach(button => {
         button.addEventListener("click", getSecondValue);
     });
 
-    return operatorValue;
+    return operator;
   }
 
 // I should store the operator and numbers values first
@@ -85,9 +85,9 @@ const displayDiv = document.querySelector(".display");
 
 // These are the values that should be stored and passed to operate function as arguments
 
-let firstValue = ""; 
-let secondValue = "";
-let operator = "";
+let firstValue = 0; 
+let secondValue = 0;
+let operator;
 let sumOfValues;
 
 // Gets the currently clicked operands value and stores and displays it
@@ -98,7 +98,8 @@ function displayValue (e) {
 
 function getFirstValue (e) {
     firstValue += Number(e.target.value);
-    console.log("First value: " + firstValue);
+    console.log(firstValue);
+    console.log(typeof(firstValue));
     return firstValue;
 }
 
@@ -107,7 +108,7 @@ function getFirstValue (e) {
 operandButtons.forEach(button => {
     button.addEventListener("click", (e) => {
         displayValue(e);
-        if (secondValue === "") {
+        if (secondValue === 0) {
             getFirstValue(e);
         }
     });
@@ -126,8 +127,15 @@ clearButton.addEventListener("click", clearDisplay);
 // Gets the second value
 function getSecondValue (e) {
     secondValue += Number(e.target.value);
-    console.log("Second value: " + secondValue)
+    console.log(secondValue);
+    console.log(typeof(secondValue));
     return secondValue;
 }
 
-// NOW I SHOULD RETURN ALL THE 3 DATA NEEDED FOR THE EQUALS FUNCTION AND SOMEHOW PASS ALL 3 TO OPERATE TO MAKE IT WORK
+/*
+CURRENT BUGS:
+
+Returning and adding the numbers results in concatenating as they are apparently strings now. 
+The second values first number is still added to the first value
+
+ */
