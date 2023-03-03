@@ -25,18 +25,36 @@ function operate (operator, input1, input2) {
     let finalValue;
     if (operator === "+") {
         finalValue = add(input1, input2);
+        console.log(finalValue);
+        return finalValue;
     } else if (operator === "-") {
         finalValue = subtract(input1, input2);
+        console.log(finalValue);
+        return finalValue;
     } else if (operator === "*") {
         finalValue = multiply(input1, input2);
+        console.log(finalValue);
+        return finalValue;
     } else if (operator === "/") {
         finalValue = divide(input1, input2);
-    } else if (finalValue & operator === "=") {
-        console.log(finalValue)
+        console.log(finalValue);
+        return finalValue;
     }
 
 }
 
+let firstValue = 5;
+let secondValue = 3;
+let operatorValue = "*";
+// Get equals button
+const equalsButton = document.querySelector(".equals");
+equalsButton.addEventListener("click",  () => {
+    if ( Boolean(firstValue) & Boolean(secondValue) & Boolean(operatorValue)) {
+        operate(operatorValue, firstValue, secondValue);
+    } else {
+        console.log("FOO");
+    }
+});
 // Get operator buttons value if clicked
 const operatorButtons = document.querySelectorAll(".operator");
 
@@ -50,8 +68,9 @@ operatorButtons.forEach(button => {
    });
   });
 
+
 function getOperatorValue (e) {
-    let operatorValue = e.target.value;
+    operatorValue = e.target.value;
     console.log("Operator value: " + operatorValue); 
 
     operandButtons.forEach(button => {
@@ -66,11 +85,13 @@ const operandButtons = document.querySelectorAll(".operand");
 const displayDiv = document.querySelector(".display");
 
 // These are the values that should be stored and passed to operate function as arguments
+/*
 let firstValue = ""; 
 let secondValue = "";
 let operator = "";
 let sumOfValues;
 console.log(typeof(secondValue));
+*/
 
 // Gets the currently clicked operands value and stores and displays it
 function displayValue (e) {
