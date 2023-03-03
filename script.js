@@ -20,16 +20,19 @@ function divide (input1, input2) {
     return input1 / input2;
 }
 
+// Sum function should return the current operations final value and reset the first and second value
 function operate (operator, input1, input2) {
-
+    let finalValue;
     if (operator === "+") {
-        return add(input1, input2);
+        finalValue = add(input1, input2);
     } else if (operator === "-") {
-        return subtract(input1, input2);
+        finalValue = subtract(input1, input2);
     } else if (operator === "*") {
-        return multiply(input1, input2);
+        finalValue = multiply(input1, input2);
     } else if (operator === "/") {
-        return divide(input1, input2);
+        finalValue = divide(input1, input2);
+    } else if (finalValue & operator === "=") {
+        console.log(finalValue)
     }
 
 }
