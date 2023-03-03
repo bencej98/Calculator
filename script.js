@@ -66,6 +66,7 @@ const displayDiv = document.querySelector(".display");
 let firstValue = ""; 
 let secondValue = "";
 let operator = "";
+let sumOfValues;
 console.log(typeof(secondValue));
 
 // Gets the currently clicked operands value and stores and displays it
@@ -85,7 +86,7 @@ operandButtons.forEach(button => {
     button.addEventListener("click", (e) => {
         displayValue(e);
         if (secondValue === "") {
-            getFirstValue (e);
+            getFirstValue(e);
         }
     });
 });
