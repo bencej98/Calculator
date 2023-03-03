@@ -43,24 +43,21 @@ function operate (operator, input1, input2) {
 
 }
 
-let firstValue = 5;
-let secondValue = 3;
-let operatorValue = "*";
-// Get equals button
+
+// Gets equals button and if all three values needed are present calls operate function
 const equalsButton = document.querySelector(".equals");
 equalsButton.addEventListener("click",  () => {
-    if ( Boolean(firstValue) & Boolean(secondValue) & Boolean(operatorValue)) {
-        operate(operatorValue, firstValue, secondValue);
+    if (Boolean(firstValue) & Boolean(secondValue) & Boolean(operator)) {
+        operate(operator, firstValue, secondValue);
     } else {
-        console.log("FOO");
+        console.log("BAR");
     }
 });
+
 // Get operator buttons value if clicked
 const operatorButtons = document.querySelectorAll(".operator");
 
 // Appends eventlistener to operators and after operator is clicked stores second value
-
-// I should somehow stop storing the first value when this happens
 operatorButtons.forEach(button => {
     button.addEventListener("click", (e) => {    
         getOperatorValue(e);
@@ -71,11 +68,13 @@ operatorButtons.forEach(button => {
 
 function getOperatorValue (e) {
     operatorValue = e.target.value;
-    console.log("Operator value: " + operatorValue); 
+    console.log("Operator value: " + operatorValue);
 
     operandButtons.forEach(button => {
         button.addEventListener("click", getSecondValue);
     });
+
+    return operatorValue;
   }
 
 // I should store the operator and numbers values first
@@ -85,13 +84,11 @@ const operandButtons = document.querySelectorAll(".operand");
 const displayDiv = document.querySelector(".display");
 
 // These are the values that should be stored and passed to operate function as arguments
-/*
+
 let firstValue = ""; 
 let secondValue = "";
 let operator = "";
 let sumOfValues;
-console.log(typeof(secondValue));
-*/
 
 // Gets the currently clicked operands value and stores and displays it
 function displayValue (e) {
@@ -102,6 +99,7 @@ function displayValue (e) {
 function getFirstValue (e) {
     firstValue += Number(e.target.value);
     console.log("First value: " + firstValue);
+    return firstValue;
 }
 
 // Right now it does stop storing the first value if the second is present
@@ -136,4 +134,7 @@ let currentNumber1 = displayDiv.textContent;
 function getSecondValue (e) {
     secondValue += Number(e.target.value);
     console.log("Second value: " + secondValue)
+    return secondValue;
 }
+
+// NOW I SHOULD RETURN ALL THE 3 DATA NEEDED FOR THE EQUALS FUNCTION AND SOMEHOW PASS ALL 3 TO OPERATE TO MAKE IT WORK
