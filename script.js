@@ -49,6 +49,9 @@ const equalsButton = document.querySelector(".equals");
 equalsButton.addEventListener("click",  () => {
     if (Boolean(firstValue) & Boolean(secondValue) & Boolean(operator)) {
         operate(operator, firstValue, secondValue);
+        firstValue = "";
+        secondValue = "";
+        operator = "";
     } else {
         console.log("BAR");
     }
@@ -59,7 +62,7 @@ const operatorButtons = document.querySelectorAll(".operator");
 
 // Appends eventlistener to operators and after operator is clicked stores second value
 operatorButtons.forEach(button => {
-    button.addEventListener("click", (e) => {    
+    button.addEventListener("click", (e) => {   
         getOperatorValue(e);
         clearDisplay(e);    
    });
@@ -85,9 +88,9 @@ const displayDiv = document.querySelector(".display");
 
 // These are the values that should be stored and passed to operate function as arguments
 
-let firstValue = 0; 
-let secondValue = 0;
-let operator;
+let firstValue = ""; 
+let secondValue = "";
+let operator = "";
 let sumOfValues;
 
 // Gets the currently clicked operands value and stores and displays it
@@ -97,10 +100,10 @@ function displayValue (e) {
 }
 
 function getFirstValue (e) {
-    firstValue += Number(e.target.value);
+    firstValue += (e.target.value);
     console.log(firstValue);
     console.log(typeof(firstValue));
-    return firstValue;
+    return Number(firstValue);
 }
 
 // Right now it does stop storing the first value if the second is present
@@ -108,7 +111,9 @@ function getFirstValue (e) {
 operandButtons.forEach(button => {
     button.addEventListener("click", (e) => {
         displayValue(e);
-        if (secondValue === 0) {
+
+        // This line prevents storing the first value when only the second is needed
+        if (operator === "") {
             getFirstValue(e);
         }
     });
@@ -126,10 +131,10 @@ clearButton.addEventListener("click", clearDisplay);
 
 // Gets the second value
 function getSecondValue (e) {
-    secondValue += Number(e.target.value);
+    secondValue += (e.target.value);
     console.log(secondValue);
     console.log(typeof(secondValue));
-    return secondValue;
+    return Number(secondValue);
 }
 
 /*
