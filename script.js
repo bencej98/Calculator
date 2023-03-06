@@ -48,7 +48,8 @@ function operate (operator, input1, input2) {
 const equalsButton = document.querySelector(".equals");
 equalsButton.addEventListener("click",  () => {
     if (Boolean(firstValue) & Boolean(secondValue) & Boolean(operator)) {
-        operate(operator, firstValue, secondValue);
+        operate(operator, Number(firstValue), Number(secondValue));
+        // Resets the values for the next calculation
         firstValue = "";
         secondValue = "";
         operator = "";
@@ -102,8 +103,7 @@ function displayValue (e) {
 function getFirstValue (e) {
     firstValue += (e.target.value);
     console.log(firstValue);
-    console.log(typeof(firstValue));
-    return Number(firstValue);
+    return firstValue;
 }
 
 // Right now it does stop storing the first value if the second is present
@@ -133,14 +133,12 @@ clearButton.addEventListener("click", clearDisplay);
 function getSecondValue (e) {
     secondValue += (e.target.value);
     console.log(secondValue);
-    console.log(typeof(secondValue));
-    return Number(secondValue);
+    return secondValue;
 }
 
 /*
 CURRENT BUGS:
 
 Returning and adding the numbers results in concatenating as they are apparently strings now. 
-The second values first number is still added to the first value
-
+The second value continues to be stored I should fix it by using a new variable like sumOfNumbers or something like this
  */
